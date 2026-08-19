@@ -90,6 +90,28 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   padding: 0 3.5rem 0 4.5rem;
   max-width: 900px;
 }
+
+/* Hero container starts hidden, slides in from top on scroll */
+.hero .reveal-content {
+  opacity: 0;
+  transform: translateY(-24px);
+  transition: opacity 0.6s ease-out 0.15s, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s;
+}
+.hero .reveal-content.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero title lines stagger within hero reveal */
+.hero-title .line {
+  display: block;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+}
+.hero-title .line.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .hero-readout {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -148,6 +170,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   font-size: 1.05rem;
 }
 
+/* Scroll reveal for section elements */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Mechanism */
 .mechanism-grid {
   display: grid;
@@ -182,6 +215,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   font-size: 0.75rem;
 }
 .readout-diagram::after { content: "cascade diagram — TBD"; }
+
+/* Mechanism diagram fade-in effect */
+.readout-card[data-revealed="false"] {
+  filter: blur(2px) brightness(0.8);
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+.readout-card[data-revealed="true"] {
+  filter: blur(0) brightness(1);
+  opacity: 1;
+}
 
 /* Consequences */
 .consequence-cards {
@@ -241,6 +284,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   border-radius: 4px;
 }
 
+/* Simulation mount subtle scale-in on reveal */
+.sim-mount[data-sim-ready="false"] {
+  transform: scale(0.96);
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.sim-mount[data-sim-ready="true"] {
+  transform: scale(1);
+}
+
 /* Footer */
 .site-footer {
   padding: 3rem 3.5rem 3rem 4.5rem;
@@ -250,13 +302,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   border-top: 1px solid rgba(139, 150, 172, 0.15);
 }
 
-/* Scroll reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Scroll bar styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(139, 150, 172, 0.3); border-radius: 4px; }
