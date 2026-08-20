@@ -43,3 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.2 }).observe(policySection);
   }
 });
+// Inside DOMContentLoaded, add this block:
+const polVis = document.getElementById('pol-decompose-vis');
+if (polVis && window.pol-decompose-triggered) { // Note: JS will run after class is added
+  const cx = 140; const cy = 120;
+  for (let i = 0; i < 35; i++) {
+    const p = document.createElement('div');
+    p.classList.add('decompose-particle');
+    const angle = (i / 35) * Math.PI * 2;
+    const dist = 40 + Math.random() * 60;
+    p.style.left = cx + Math.cos(angle) * dist + 'px';
+    p.style.top = cy + Math.sin(angle) * dist + 'px';
+    p.style.animationDelay = `${i * 0.08}s`;
+    polVis.appendChild(p);
+  }
+}
