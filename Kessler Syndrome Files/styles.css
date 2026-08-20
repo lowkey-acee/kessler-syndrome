@@ -317,4 +317,58 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 @keyframes particle-fade { to { opacity: 0; transform: scale(0) translate(0, 20px); } }
 
 .site-footer { padding: 3rem 3.5rem 3rem 4.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); border-top: 1px solid rgba(139,150,172,0.15); }
+/* HERO SLIDE-IN */
+.hero {
+  opacity: 0;
+  transform: translateY(-24px);
+  transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s;
+}
+.hero.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* STAGGERED TITLE LINES */
+.hero-title .line {
+  display: block;
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+}
+.hero-title .line.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MECHANISM BLUR-TO-CLEAR */
+.readout-card[data-revealed="false"] {
+  filter: blur(4px) brightness(0.7);
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+.readout-card[data-revealed="true"] {
+  filter: blur(0) brightness(1);
+  opacity: 1;
+}
+
+/* SCROLL REVEAL FOR SECTIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* POLICY DECOMPOSITION PARTICLES */
+.decompose-particle {
+  position: absolute; width: 8px; height: 8px;
+  background: var(--amber); border-radius: 50%;
+  box-shadow: 0 0 6px rgba(245,166,35,0.7);
+  animation: particle-fade 3s ease-out forwards;
+}
+@keyframes particle-fade {
+  to { opacity: 0; transform: scale(0) translate(0, 20px); }
+}
 
