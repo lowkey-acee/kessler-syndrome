@@ -1,32 +1,45 @@
-// Scroll-reveal for sections
+// main.js
 document.addEventListener('DOMContentLoaded', () => {
-  const revealTargets = document.querySelectorAll(
-    '.section h2, .section-lede, .consequence-card, .readout-card, .video-frame, .sim-mount'
-  );
-  revealTargets.forEach((el) => el.classList.add('reveal'));
+  // Hero content slide-in
+  const heroContent = document.querySelector('.hero .reveal-content');
+  if (heroContent) {
+    new IntersectionObserver((entries) => {
+      entries[0].isIntersecting && heroContent.classList.add('is-visible');
+    }, { threshold: 0.3 }).observe(heroContent);
+  }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
+  // Staggered title lines in hero
+  const titleLines = document.querySelectorAll('.hero-title .line');
+  if (titleLines.length) {
+    let delay = 100;
+    titleLines.forEach((line, i) => {
+      setTimeout(() => line.classList.add('is-inview'), delay);
+      delay += 250;
+    });
+  }
 
-  revealTargets.forEach((el) => observer.observe(el));
+  // Mechanism diagram blur-to-clear
+  const mechCards = document.querySelectorAll('.readout-card[data-revealed="false"]');
+  if (mechCards.length) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => e.isIntersecting && e.target.classList.toggle('data-revealed', 'true'));
+    }, { threshold: 0.4 });
+    mechCards.forEach(card => obs.observe(card));
+  }
+
+  // Simulation mount scale-in
+  const simMount = document.querySelector('.sim-mount[data-sim-ready="false"]');
+  if (simMount) {
+    new IntersectionObserver((entries) => {
+      entries[0].isIntersecting && simMount.classList.toggle('data-sim-ready', 'true');
+    }, { threshold: 0.3 }).observe(simMount);
+  }
+
+  // Policy decomposition visualizer trigger
+  const policySection = document.getElementById('policy');
+  if (policySection) {
+    new IntersectionObserver((entries) => {
+      entries[0].isIntersecting && policySection.classList.add('pol-decompose-triggered');
+    }, { threshold: 0.2 }).observe(policySection);
+  }
 });
-
-// --- Simulation mount stub ---
-// The 3D debris visualization (three.js + satellite.js for TLE propagation)
-// will initialize into #sim-canvas-mount. Left empty intentionally until
-// the dataset and propagation logic are ready.
-//
-// Planned structure:
-//   1. Fetch/parse TLE data (CelesTrak)
-//   2. Propagate positions with satellite.js (SGP4)
-//   3. Render points/orbits in three.js, mounted to #sim-canvas-mount
-//   4. Wire up click/hover interaction for object info
