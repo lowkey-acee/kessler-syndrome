@@ -305,4 +305,58 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 /* Scroll bar styling */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
+/* POLICY LAYOUT */
+.policy-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.8rem;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ISS CURVE VISUAL (right side) */
+.iss-curve-visual {
+  position: absolute;
+  top: -30%; right: 0; width: 350px; height: 450px;
+  background: radial-gradient(circle at 60% 60%, rgba(79,209,232,0.12) 0%, transparent 50%),
+              conic-gradient(from 360deg, transparent 0% transparent 10%, rgba(139,150,172,0.15) 10%, var(--cyan) 40%, transparent 80%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* If you drop in your rendered ISS image later, use this instead of the gradient above */
+.iss-curve-visual.img-mode {
+  background-image: url('your-iss-curve-render.png');
+  background-size: contain;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* POLICY BLOCKS */
+.policy-block {
+  margin-bottom: 1rem;
+  border: 1px solid rgba(139,150,172,0.15);
+}
+.policy-block:hover { border-color: var(--amber); transform: translateY(-2px); }
+
+/* DECOMPOSITION VISUALIZER (left-aligned next to blocks) */
+.decomposition-visualizer {
+  position: relative; width: 280px; height: 240px; margin-top: 1.5rem;
+  background: var(--panel); border: 1px solid rgba(79,209,232,0.2); border-radius: 6px; overflow: hidden;
+}
+
+/* Particles will be injected via JS */
+.decompose-particle {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: var(--amber);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(245,166,35,0.7);
+  animation: particle-fade 3s ease-out forwards;
+}
+
+@keyframes particle-fade {
+  to { opacity: 0; transform: scale(0) translate(0, 20px); }
+}
+
 ::-webkit-scrollbar-thumb { background: rgba(139, 150, 172, 0.3); border-radius: 4px; }
