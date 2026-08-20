@@ -34,7 +34,62 @@
   <a href="#mechanism" class="hero-cta">See how it works ↓</a>
 </header>
 
-<!-- MECHANISM -->
+  <!-- DOCUMENTARY / VIDEO -->
+<section class="section section--panel" id="documentary">
+  <span class="section-eyebrow">[ 03 — THE REALITY ]</span>
+  <h2>The cascade isn't hypothetical.</h2>
+  <p class="section-lede">Real footage of orbital encounters, debris avoidance maneuvers, and what a collision cascade actually looks like.</p>
+
+  <div class="video-frame" id="kessler-video-container">
+    <video autoplay muted loop playsinline poster="debris-preview.jpg">
+      <!-- Replace with your DaVinci Resolve export -->
+      <source src="iss-debris-encounter.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay-text">Scroll to see cascade projections →</div>
+  </div>
+
+  <ul class="timeline-cues">
+    <li data-time="0:12">2009 Starfish Prime collision → first major debris cloud</li>
+    <li data-time="0:38">ISS regular debris avoidance maneuvers</li>
+    <li data-time="1:55">Projected cascade without mitigation (2050)</li>
+  </ul>
+</section>
+
+<!-- POLICY / DECOMPOSITION VISUAL -->
+<section class="section" id="policy">
+  <span class="section-eyebrow">[ 04 — POLICY LEVERS ]</span>
+  <h2>Break the cycle. Before it starts.</h2>
+
+  <div class="policy-layout">
+    <!-- LEFT: Policy blocks -->
+    <div class="policy-left">
+      <article class="consequence-card policy-block">
+        <span class="consequence-tag">REGULATION</span>
+        <h3>Kessler Criteria & Debris Tracking Mandates</h3>
+        <p>International frameworks requiring collision avoidance, end-of-life disposal, and active debris removal standards.</p>
+      </article>
+      <article class="consequence-card policy-block">
+        <span class="consequence-tag">TECHNOLOGY</span>
+        <h3>On-Orbit Debris Removal (ODR) Systems</h3>
+        <p>Nano-swarm capture, robotic tethers, and electrodynamic deorbiting to intercept debris before it cascades.</p>
+      </article>
+      <article class="consequence-card policy-block">
+        <span class="consequence-tag">INCENTIVE</span>
+        <h3>Orbital Insurance & Liability Frameworks</h3>
+        <p>Financial models that make debris mitigation cheaper than cleanup, aligning commercial operators with long-term sustainability.</p>
+      </article>
+    </div>
+
+    <!-- RIGHT: ISS curve + decomposition visualizer -->
+    <div class="policy-right">
+      <div class="iss-curve-visual" aria-hidden="true"></div>
+      <div class="decomposition-visualizer" id="pol-decompose-vis"></div>
+    </div>
+  </div>
+</section>
+
+  <!-- MECHANISM -->
 <section class="section" id="mechanism">
   <span class="section-eyebrow">[ 01 — THE MECHANISM ]</span>
   <h2>A feedback loop, not an accident.</h2>
