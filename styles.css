@@ -305,6 +305,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 /* Scroll bar styling */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
+
 /* POLICY LAYOUT */
 .policy-layout {
   display: grid;
@@ -324,13 +325,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   z-index: -1;
 }
 
-/* If you drop in your rendered ISS image later, use this instead of the gradient above */
-.iss-curve-visual.img-mode {
-  background-image: url('your-iss-curve-render.png');
-  background-size: contain;
-  border-radius: 4px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
+/* If you drop in your rendered ISS image later, uncomment this and remove the gradient above */
+/* .iss-curve-visual.img-mode { background-image: url('your-iss-curve.png'); background-size: contain; border-radius: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); } */
 
 /* POLICY BLOCKS */
 .policy-block {
@@ -339,18 +335,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 }
 .policy-block:hover { border-color: var(--amber); transform: translateY(-2px); }
 
-/* DECOMPOSITION VISUALIZER (left-aligned next to blocks) */
+/* DECOMPOSITION VISUALIZER */
 .decomposition-visualizer {
   position: relative; width: 280px; height: 240px; margin-top: 1.5rem;
   background: var(--panel); border: 1px solid rgba(79,209,232,0.2); border-radius: 6px; overflow: hidden;
 }
 
-/* Particles will be injected via JS */
 .decompose-particle {
-  position: absolute;
-  width: 8px; height: 8px;
-  background: var(--amber);
-  border-radius: 50%;
+  position: absolute; width: 8px; height: 8px;
+  background: var(--amber); border-radius: 50%;
   box-shadow: 0 0 6px rgba(245,166,35,0.7);
   animation: particle-fade 3s ease-out forwards;
 }
@@ -359,4 +352,3 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   to { opacity: 0; transform: scale(0) translate(0, 20px); }
 }
 
-::-webkit-scrollbar-thumb { background: rgba(139, 150, 172, 0.3); border-radius: 4px; }
