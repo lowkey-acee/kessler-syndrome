@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kessler Syndrome | The Cascade We Can't See</title>
-<meta name="description" content="An interactive look at orbital debris accumulation, the Kessler cascade, and what it threatens.">
+<meta name="description" content="An interactive look at orbital debris accumulation and the Kessler cascade.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,80 +22,28 @@
     <a href="#documentary">Film</a>
     <a href="#simulation">Simulation</a>
     <a href="#policy">Policy</a>
-    <a href="#sources">Sources</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero" id="hero">
   <div class="hero-readout" aria-hidden="true">[ OBJECTS TRACKED: 34,000+ ]</div>
-  <h1 class="hero-title">Every collision<br>makes the next one<br>more likely.</h1>
+  <h1 class="hero-title">
+    <span class="line">Every collision<br></span>
+    <span class="line">makes the next one<br></span>
+    <span class="line">more likely.</span>
+  </h1>
   <p class="hero-sub">Low Earth orbit is filling with debris. Past a certain density, collisions stop being isolated events — and start being a chain reaction.</p>
   <a href="#mechanism" class="hero-cta">See how it works ↓</a>
 </header>
 
-  <!-- DOCUMENTARY / VIDEO -->
-<section class="section section--panel" id="documentary">
-  <span class="section-eyebrow">[ 03 — THE REALITY ]</span>
-  <h2>The cascade isn't hypothetical.</h2>
-  <p class="section-lede">Real footage of orbital encounters, debris avoidance maneuvers, and what a collision cascade actually looks like.</p>
-
-  <div class="video-frame" id="kessler-video-container">
-    <video autoplay muted loop playsinline poster="debris-preview.jpg">
-      <!-- Replace with your DaVinci Resolve export -->
-      <source src="iss-debris-encounter.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="video-overlay-text">Scroll to see cascade projections →</div>
-  </div>
-
-  <ul class="timeline-cues">
-    <li data-time="0:12">2009 Starfish Prime collision → first major debris cloud</li>
-    <li data-time="0:38">ISS regular debris avoidance maneuvers</li>
-    <li data-time="1:55">Projected cascade without mitigation (2050)</li>
-  </ul>
-</section>
-
-<!-- POLICY / DECOMPOSITION VISUAL -->
-<section class="section" id="policy">
-  <span class="section-eyebrow">[ 04 — POLICY LEVERS ]</span>
-  <h2>Break the cycle. Before it starts.</h2>
-
-  <div class="policy-layout">
-    <!-- LEFT: Policy blocks -->
-    <div class="policy-left">
-      <article class="consequence-card policy-block">
-        <span class="consequence-tag">REGULATION</span>
-        <h3>Kessler Criteria & Debris Tracking Mandates</h3>
-        <p>International frameworks requiring collision avoidance, end-of-life disposal, and active debris removal standards.</p>
-      </article>
-      <article class="consequence-card policy-block">
-        <span class="consequence-tag">TECHNOLOGY</span>
-        <h3>On-Orbit Debris Removal (ODR) Systems</h3>
-        <p>Nano-swarm capture, robotic tethers, and electrodynamic deorbiting to intercept debris before it cascades.</p>
-      </article>
-      <article class="consequence-card policy-block">
-        <span class="consequence-tag">INCENTIVE</span>
-        <h3>Orbital Insurance & Liability Frameworks</h3>
-        <p>Financial models that make debris mitigation cheaper than cleanup, aligning commercial operators with long-term sustainability.</p>
-      </article>
-    </div>
-
-    <!-- RIGHT: ISS curve + decomposition visualizer -->
-    <div class="policy-right">
-      <div class="iss-curve-visual" aria-hidden="true"></div>
-      <div class="decomposition-visualizer" id="pol-decompose-vis"></div>
-    </div>
-  </div>
-</section>
-
-  <!-- MECHANISM -->
+<!-- MECHANISM -->
 <section class="section" id="mechanism">
   <span class="section-eyebrow">[ 01 — THE MECHANISM ]</span>
   <h2>A feedback loop, not an accident.</h2>
   <div class="mechanism-grid">
     <p class="section-lede">In 1978, NASA scientist Donald Kessler modeled what happens when orbital debris crosses a critical density: each collision creates fragments, fragments raise the odds of further collisions, and the process can sustain itself — without a single new launch.</p>
-    <div class="readout-card">
+    <div class="readout-card" data-revealed="false">
       <span class="readout-label">COLLISION CASCADE</span>
       <div class="readout-diagram" data-note="static diagram placeholder — replace with real illustration"></div>
     </div>
@@ -107,58 +55,59 @@
   <span class="section-eyebrow">[ 02 — WHAT'S AT STAKE ]</span>
   <h2>Three systems, one shared risk.</h2>
   <div class="consequence-cards">
-    <article class="consequence-card">
+    <article class="consequence-card reveal">
       <span class="consequence-tag">COMMUNICATIONS</span>
       <h3>Active satellites</h3>
       <p>Debris forces costly avoidance maneuvers and threatens the infrastructure global communication depends on.</p>
     </article>
-    <article class="consequence-card">
+    <article class="consequence-card reveal">
       <span class="consequence-tag">STATION SAFETY</span>
       <h3>Human spaceflight</h3>
       <p>The ISS regularly performs debris avoidance maneuvers — a direct, ongoing risk to the people on board.</p>
     </article>
-    <article class="consequence-card">
-      <span class="consequence-tag">EXPLORATION</span>
-      <h3>Future access to orbit</h3>
-      <p>A sufficiently dense debris field could make parts of low Earth orbit impractical to launch through safely.</p>
-    </article>
   </div>
 </section>
 
-<!-- DOCUMENTARY -->
-<section class="section section--dark" id="documentary">
-  <span class="section-eyebrow">[ 03 — THE FILM ]</span>
-  <h2>Two minutes. Earth, then the weight above it.</h2>
-  <div class="video-frame" data-note="video embed placeholder">
-    <span class="video-placeholder-label">DOCUMENTARY — 2:00</span>
+<!-- DOCUMENTARY / VIDEO -->
+<section class="section section--panel" id="documentary">
+  <span class="section-eyebrow">[ 03 — THE REALITY ]</span>
+  <h2>The cascade isn't hypothetical.</h2>
+  <p class="section-lede">Real footage of orbital encounters, debris avoidance maneuvers, and what a collision cascade actually looks like.</p>
+  <div class="video-frame" id="kessler-video-container">
+    <!-- Replace with your DaVinci Resolve export -->
+    <video autoplay muted loop playsinline poster="debris-preview.jpg">
+      <source src="iss-debris-encounter.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
-</section>
-
-<!-- SIMULATION -->
-<section class="section" id="simulation">
-  <span class="section-eyebrow">[ 04 — THE SIMULATION ]</span>
-  <h2>See the field for yourself.</h2>
-  <p class="section-lede">Built from real tracked-object data. Rotate, zoom, and click any object to see its designation and orbital path.</p>
-  <div class="sim-mount" id="sim-canvas-mount" data-note="three.js mounts here"></div>
 </section>
 
 <!-- POLICY -->
-<section class="section section--panel" id="policy">
-  <span class="section-eyebrow">[ 05 — POLICY LEVERS ]</span>
-  <h2>The physics is fixed. The response isn't.</h2>
-  <p class="section-lede">Deorbit timelines, tracking standards, and active debris removal all shape how this plays out — and where the gaps are today.</p>
+<section class="section section--dark" id="policy">
+  <span class="section-eyebrow">[ 04 — POLICY LEVERS ]</span>
+  <h2>Break the cycle. Before it starts.</h2>
+  <div class="policy-layout">
+    <div class="policy-left">
+      <article class="consequence-card reveal policy-block">
+        <span class="consequence-tag">REGULATION</span>
+        <h3>Kessler Criteria & Debris Tracking Mandates</h3>
+        <p>International frameworks requiring collision avoidance, end-of-life disposal, and active debris removal standards.</p>
+      </article>
+      <article class="consequence-card reveal policy-block">
+        <span class="consequence-tag">TECHNOLOGY</span>
+        <h3>On-Orbit Debris Removal (ODR) Systems</h3>
+        <p>Nano-swarm capture, robotic tethers, and electrodynamic deorbiting to intercept debris before it cascades.</p>
+      </article>
+    </div>
+    <div class="policy-right">
+      <div class="iss-curve-visual" aria-hidden="true"></div>
+      <div class="decomposition-visualizer" id="pol-decompose-vis"></div>
+    </div>
+  </div>
 </section>
 
-<!-- SOURCES -->
-<section class="section" id="sources">
-  <span class="section-eyebrow">[ 06 — SOURCES & METHOD ]</span>
-  <h2>Built on real data, checked against real expertise.</h2>
-  <p class="section-lede">Full citations and a note on how this simulation was validated.</p>
-</section>
-
-<footer class="site-footer">
-  <span>AP Capstone Project — Kingston</span>
-</footer>
+<!-- FOOTER -->
+<footer class="site-footer">© 2026 Kessler Syndrome Project. Educational use only.</footer>
 
 <script src="main.js"></script>
 </body>
