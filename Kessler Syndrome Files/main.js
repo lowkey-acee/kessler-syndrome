@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Hero slide-in
+  // Hero slide-in on scroll
   const hero = document.querySelector('.hero');
   if (hero) {
     new IntersectionObserver((entries) => entries[0].isIntersecting && hero.classList.add('is-visible'), { threshold: 0.4 }).observe(hero);
@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Staggered title lines
   const lines = document.querySelectorAll('.hero-title .line');
-  if (lines.length) lines.forEach((l, i) => setTimeout(() => l.classList.add('is-inview'), 150 + i * 280));
+  if (lines.length) {
+    lines.forEach((l, i) => setTimeout(() => l.classList.add('is-inview'), 150 + i * 280));
+  }
 
   // Mechanism blur-to-clear
   const mechCards = document.querySelectorAll('.readout-card[data-revealed="false"]');
@@ -15,20 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
     new IntersectionObserver((entries) => entries.forEach(e => e.isIntersecting && e.target.classList.toggle('data-revealed', 'true')), { threshold: 0.3 }).observe(...mechCards);
   }
 
-  // Sim mount scale-in (keep for later when you add Three.js)
-  const simMount = document.querySelector('.sim-mount[data-sim-ready="false"]');
-  if (simMount) new IntersectionObserver((entries) => entries[0].isIntersecting && simMount.classList.toggle('data-sim-ready', 'true'), { threshold: 0.3 }).observe(simMount);
-
   // Policy decomposition trigger
   const polSection = document.getElementById('policy');
   if (polSection) {
     new IntersectionObserver((entries) => entries[0].isIntersecting && polSection.classList.add('pol-decompose-triggered'), { threshold: 0.2 }).observe(polSection);
 
-    // Run decomposition JS on trigger
-    window.pol-decompose-triggered = () => {
+    // Fixed variable name (no hyphens allowed in JS)
+    window.triggerDecomposition = () => {
       const vis = document.getElementById('pol-decompose-vis');
-      if (!vis || !window.decomposed) return;
+      if (!vis || window.decomposed) return;
       window.decomposed = true;
+      
       const cx = 140; const cy = 120;
       for (let i = 0; i < 35; i++) {
         const p = document.createElement('div');
