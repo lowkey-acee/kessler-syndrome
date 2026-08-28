@@ -1,0 +1,13 @@
+# IDE
+.vscode/*
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Media (keep only final exports)
+assets/video/*.mp4
+assets/images/*.jpg
+assets/images/*.png
